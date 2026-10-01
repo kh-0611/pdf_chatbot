@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --baby-pink: #fde4ea;
+  --blush: #f9cfd9;
+  --peach: #ffdcc8;
+  --peach-soft: #ffeadd;
+  --cream: #fffaf4;
+  --cream-deep: #fff3e8;
+  --rose: #e48ba3;
+  --cherry: #c9546f;
+  --cherry-dark: #a93f59;
+  --plum: #6b3a52;
+  --plum-deep: #4a2438;
+  --plum-muted: #9c6b82;
+  --brown: #5a3a3f;
+  --shadow-pink: 0 10px 30px rgba(228, 139, 163, 0.25);
+  --shadow-soft: 0 4px 14px rgba(201, 84, 111, 0.15);
+}
+
+/* ---------- App background ---------- */
+
+.stApp {
+  background:
+    radial-gradient(circle at 10% 10%, var(--baby-pink) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, var(--peach) 0%, transparent 45%),
+    linear-gradient(180deg, #fff1f3 0%, #ffe9e0 100%);
+  background-attachment: fixed;
+  font-family: 'Quicksand', 'Segoe UI', sans-serif;
+  color: var(--brown);
+}
+
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"] {
+  background: transparent;
+}
+
+[data-testid="stHeader"] {
+  background: rgba(255, 241, 243, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(228, 139, 163, 0.25);
+}
+
+[data-testid="stHeader"] * {
+  color: var(--plum);
+}
+
+[data-testid="stToolbar"],
+[data-testid="stDecoration"] {
+  background: transparent;
+}
+
+[data-testid="stSidebar"] {
+  background: var(--cream-deep);
+  border-right: 1px solid rgba(228, 139, 163, 0.3);
+}
+
+[data-testid="stSidebar"] * {
+  color: var(--plum);
+}
+
+.block-container,
+[data-testid="stMainBlockContainer"] {
+  max-width: 980px;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Decorative corners ---------- */
+/* Replace the emoji with background-image: url(...) to use your own PNGs */
+
+.stApp::before {
+  content: "🍒  📚";
+  position: fixed;
+  top: 70px;
+  left: 18px;
+  font-size: 2.6rem;
+  letter-spacing: 6px;
+  opacity: 0.55;
+  transform: rotate(-12deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stApp::after {
+  content: "🍇  🌸  ✏️";
+  position: fixed;
+  bottom: 18px;
+  right: 22px;
+  font-size: 2.4rem;
+  letter-spacing: 8px;
+  opacity: 0.5;
+  transform: rotate(8deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------- Typography ---------- */
+
+h1, h2, h3, h4, h5, h6,
+[data-testid="stHeading"] {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--plum-deep);
+  letter-spacing: 0.2px;
+}
+
+h2, h3 {
+  font-weight: 600;
+  color: var(--plum);
+}
+
+p, li, label, span,
+[data-testid="stMarkdownContainer"] {
+  font-family: 'Quicksand', 'Segoe UI', sans-serif;
+  color: var(--brown);
+}
+
+[data-testid="stCaptionContainer"],
+small {
+  color: var(--plum-muted);
+}
+
+a { color: var(--cherry); }
+a:hover { color: var(--cherry-dark); }
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--rose), transparent);
+  opacity: 0.6;
+  margin: 2rem 0;
+}
+
+/* ---------- Hero card ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  align-items: center;
+  gap: 2rem;
+  background: var(--cream);
+  border: 1px solid rgba(228, 139, 163, 0.35);
+  border-radius: 32px;
+  padding: 2.8rem 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-pink);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "🍒";
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.hero::after {
+  content: "📖";
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.hero-visual {
+  min-height: 190px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 30% 30%, var(--blush), transparent 60%),
+    linear-gradient(135deg, var(--baby-pink), var(--peach));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.7);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-text { text-align: center; }
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--plum-deep);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  color: var(--plum-muted);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 0.6rem;
+  letter-spacing: 0.5px;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 2px;
+  margin: 1.2rem auto;
+  background: linear-gradient(90deg, transparent, var(--rose), transparent);
+  border: none;
+}
+
+/* ---------- Upload card ---------- */
+
+.upload-card {
+  background: var(--cream);
+  border: 1px solid rgba(228, 139, 163, 0.35);
+  border-radius: 28px 28px 0 0;
+  padding: 1.8rem 2rem 0.6rem;
+  box-shadow: var(--shadow-pink);
+  margin-bottom: -0.5rem;
+}
+
+.upload-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--plum-deep);
+  margin-bottom: 0.2rem;
+}
+
+.upload-desc {
+  color: var(--plum-muted);
+  margin-bottom: 0.4rem;
+}
+
+[data-testid="stFileUploader"] {
+  background: var(--cream);
+  border-radius: 0 0 28px 28px;
+  padding: 1rem 1.2rem 1.4rem;
+  box-shadow: var(--shadow-soft);
+}
+
+[data-testid="stFileUploader"] label,
+[data-testid="stFileUploader"] label p {
+  color: var(--plum-deep);
+  font-weight: 700;
+}
+
+[data-testid="stFileUploaderDropzone"] {
+  background: var(--cream-deep);
+  border: 2.5px dashed var(--rose);
+  border-radius: 24px;
+  padding: 2.2rem 1.5rem;
+  transition: all 0.25s ease;
+}
+
+[data-testid="stFileUploaderDropzone"]:hover {
+  background: var(--peach-soft);
+  border-color: var(--cherry);
+  box-shadow: 0 0 0 5px rgba(228, 139, 163, 0.15);
+}
+
+[data-testid="stFileUploaderDropzone"] *,
+[data-testid="stFileUploaderDropzoneInstructions"] span,
+[data-testid="stFileUploaderDropzoneInstructions"] small,
+[data-testid="stFileUploaderDropzoneInstructions"] div {
+  color: var(--plum);
+}
+
+[data-testid="stFileUploaderDropzoneInstructions"] small {
+  color: var(--plum-muted);
+}
+
+[data-testid="stFileUploaderDropzone"] svg {
+  color: var(--cherry);
+  fill: var(--cherry);
+}
+
+[data-testid="stFileUploaderDropzone"] button {
+  background: linear-gradient(135deg, var(--rose), var(--cherry));
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.25s ease;
+}
+
+[data-testid="stFileUploaderDropzone"] button * { color: #ffffff; }
+
+[data-testid="stFileUploaderDropzone"] button:hover {
+  background: linear-gradient(135deg, var(--cherry), var(--cherry-dark));
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+[data-testid="stFileUploaderFile"],
+[data-testid="stFileUploaderFileName"] {
+  background: var(--peach-soft);
+  border-radius: 14px;
+  color: var(--plum);
+}
+
+[data-testid="stFileUploaderFile"] * { color: var(--plum); }
+
+/* ---------- Buttons ---------- */
+
+.stButton > button,
+.stDownloadButton > button,
+[data-testid="stBaseButton-secondary"],
+[data-testid="stBaseButton-primary"],
+[data-testid="stFormSubmitButton"] > button {
+  background: linear-gradient(135deg, var(--rose), var(--cherry));
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.6rem;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.25s ease;
+}
+
+.stButton > button p,
+.stDownloadButton > button p { color: #ffffff; }
+
+.stButton > button:hover,
+.stDownloadButton > button:hover,
+[data-testid="stBaseButton-secondary"]:hover,
+[data-testid="stBaseButton-primary"]:hover {
+  background: linear-gradient(135deg, var(--cherry), var(--cherry-dark));
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(169, 63, 89, 0.3);
+}
+
+.stButton > button:active {
+  transform: translateY(0);
+  background: var(--cherry-dark);
+  color: #ffffff;
+}
+
+.stButton > button:focus:not(:active) {
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 0 0 4px rgba(228, 139, 163, 0.35);
+}
+
+/* ---------- Inputs ---------- */
+
+[data-testid="stTextInput"] label,
+[data-testid="stTextArea"] label {
+  color: var(--plum);
+  font-weight: 600;
+}
+
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea,
+.stTextInput input {
+  background: var(--cream);
+  color: var(--brown);
+  border: 2px solid var(--blush);
+  border-radius: 18px;
+  padding: 0.7rem 1rem;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.2s ease;
+}
+
+[data-testid="stTextInput"] input::placeholder,
+[data-testid="stTextArea"] textarea::placeholder {
+  color: var(--plum-muted);
+  opacity: 0.8;
+}
+
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus {
+  border-color: var(--cherry);
+  box-shadow: 0 0 0 4px rgba(228, 139, 163, 0.25);
+  outline: none;
+}
+
+[data-baseweb="input"],
+[data-baseweb="base-input"] {
+  background: var(--cream);
+  border-radius: 18px;
+}
+
+/* ---------- Chat ---------- */
+
+[data-testid="stChatInput"] {
+  background: var(--cream);
+  border: 2px solid var(--blush);
+  border-radius: 999px;
+  box-shadow: var(--shadow-pink);
+}
+
+[data-testid="stChatInput"] textarea {
+  background: transparent;
+  color: var(--brown);
+}
+
+[data-testid="stChatInput"] textarea::placeholder { color: var(--plum-muted); }
+
+[data-testid="stChatInput"] button {
+  background: var(--cherry);
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+[data-testid="stChatInput"] button:hover { background: var(--cherry-dark); }
+
+[data-testid="stBottom"],
+[data-testid="stBottomBlockContainer"] { background: transparent; }
+
+[data-testid="stChatMessage"] {
+  background: var(--cream);
+  border: 1px solid rgba(228, 139, 163, 0.3);
+  border-radius: 24px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+[data-testid="stChatMessage"] * { color: var(--brown); }
+
+[data-testid="stChatMessageAvatarUser"],
+[data-testid="stChatMessageAvatarAssistant"] {
+  background: var(--peach);
+  border-radius: 50%;
+}
+
+/* ---------- Alerts, spinner, expander ---------- */
+
+[data-testid="stAlert"],
+[data-testid="stNotification"] {
+  background: var(--cream);
+  border: 1px solid rgba(228, 139, 163, 0.4);
+  border-left: 6px solid var(--rose);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+[data-testid="stAlert"] *,
+[data-testid="stNotification"] * { color: var(--plum); }
+
+[data-testid="stSpinner"] * { color: var(--cherry); }
+.stSpinner > div { border-top-color: var(--cherry); }
+
+[data-testid="stExpander"] {
+  background: var(--cream);
+  border: 1px solid rgba(228, 139, 163, 0.35);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+[data-testid="stExpander"] summary {
+  background: var(--peach-soft);
+  color: var(--plum);
+  font-weight: 700;
+}
+
+[data-testid="stExpander"] summary:hover { background: var(--blush); }
+[data-testid="stExpander"] summary * { color: var(--plum); }
+[data-testid="stExpander"] details > div { background: var(--cream); }
+
+[data-testid="stExpander"] p,
+[data-testid="stExpander"] h3 { color: var(--brown); }
+
+/* ---------- Code and tables ---------- */
+
+code, pre, [data-testid="stCode"] {
+  background: var(--peach-soft);
+  color: var(--plum);
+  border-radius: 12px;
+}
+
+[data-testid="stTable"],
+[data-testid="stDataFrame"] {
+  background: var(--cream);
+  border-radius: 18px;
+}
+
+/* ---------- Scrollbar and selection ---------- */
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--baby-pink); }
+::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cherry); }
+
+::selection {
+  background: var(--blush);
+  color: var(--plum-deep);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .stApp::before,
+  .stApp::after {
+    font-size: 1.8rem;
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 768px) {
+  .block-container,
+  [data-testid="stMainBlockContainer"] {
+    padding: 2rem 1rem 5rem 1rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.4rem;
+    gap: 1.2rem;
+  }
+
+  .hero-visual {
+    min-height: 120px;
+    font-size: 3rem;
+  }
+
+  .hero-title { font-size: 2.1rem; }
+
+  [data-testid="stFileUploaderDropzone"] { padding: 1.4rem 1rem; }
+
+  .stButton > button { width: 100%; }
+}
